@@ -42,7 +42,32 @@
   :prefix "dogechain-api-")
 
 (defconst dogechain-api-endpoint "http://dogechain.info")
+(defconst dogechain-api-simple-endpoint "/chain/Dogecoin/q/")
 
+
+;; Simple API functions
+
+(defun dogechain-api-get-address-balance (address)
+  "Get amount ever received minus amount ever sent by ADDRESS."
+  (dogechain-api--get-simple "addressbalance" address))
+
+(defun dogechain-api--get-simple (method &rest params)
+  "Get a simple result from the chain."
+
+  ;; http://dogechain.info/chain/Dogecoin/q/addressbalance/DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e
+  )
+
+
+(defun dogechain-api--build-simple-endpoint (method &rest params)
+  "Create the address endpoint for a simple call to METHOD with optional PARAMS."
+  (let ((query-string ""))
+    (when (not (null params))
+      (setq query-string (mapconcat 'identity params "/")))
+    (format "%s%s%s/%s"
+            dogechain-api-endpoint
+            dogechain-api-simple-endpoint
+            method
+            query-string)))
 
 (provide 'dogechain-api)
 ;;; dogechain-api.el ends here
