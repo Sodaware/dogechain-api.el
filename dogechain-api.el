@@ -49,16 +49,16 @@
 
 (defun dogechain-api-get-address-balance (address)
   "Get amount ever received minus amount ever sent by ADDRESS."
-  (dogechain-api--get-simple "addressbalance" address))
+  (string-to-number (dogechain-api--get-simple "addressbalance" address)))
 
 (defun dogechain-api--get-simple (method &rest params)
-  "Get a simple result from the chain."
+  "Get a none-json result from the chain METHOD with optional PARAMS."
+  (with-current-buffer (url-retrieve-synchronously (dogechain-api--build-simple-endpoint method params))
+    (delete-region (point-min) (+ 1 url-http-end-of-headers))
+    (prog1 (buffer-string)
+      (kill-buffer))))
 
-  ;; http://dogechain.info/chain/Dogecoin/q/addressbalance/DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e
-  )
-
-
-(defun dogechain-api--build-simple-endpoint (method &rest params)
+(defun dogechain-api--build-simple-endpoint (method &optional params)
   "Create the address endpoint for a simple call to METHOD with optional PARAMS."
   (let ((query-string ""))
     (when (not (null params))
