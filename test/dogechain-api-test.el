@@ -1,3 +1,11 @@
+;; Simple method tests
+
+(ert-deftest dogechain-api-test/can-get-address-balance ()
+  (with-mock
+   (mock (dogechain-api--get-simple "addressbalance" "TEST_ADDRESS") => (read-fixture-as-string "getaddressbalance-test_address.txt"))
+   (should (= 123456.789 (dogechain-api-get-address-balance "TEST_ADDRESS")))))
+
+
 ;; Internal tests
 
 (ert-deftest dogechain-api-test/can-create-simple-endpoint-without-params ()
