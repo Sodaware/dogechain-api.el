@@ -51,6 +51,10 @@
   "Get amount ever received minus amount ever sent by ADDRESS."
   (string-to-number (dogechain-api--get-simple "addressbalance" address)))
 
+(defun dogechain-api-address-to-hash (address)
+  "Get the public key hash for ADDRESS."
+  (dogechain-api--get-simple "addresstohash" address))
+
 (defun dogechain-api--get-simple (method &rest params)
   "Get a none-json result from the chain METHOD with optional PARAMS."
   (with-current-buffer (url-retrieve-synchronously (dogechain-api--build-simple-endpoint method params))
