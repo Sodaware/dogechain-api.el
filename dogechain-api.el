@@ -70,6 +70,10 @@
   "Get the current block number."
   (string-to-number (dogechain-api--get-simple "getblockcount")))
 
+(defun dogechain-api-get-difficulty ()
+  "Get the difficulty of the last solved block."
+  (string-to-number (dogechain-api--get-simple "getdifficulty")))
+
 ;; Internal helpers
 
 (defun dogechain-api--get-simple (method &rest params)

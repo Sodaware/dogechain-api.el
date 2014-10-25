@@ -32,6 +32,12 @@
    (mock (dogechain-api--get-simple "getblockcount") => "123456")
    (should (eq 123456 (dogechain-api-get-block-count)))))
 
+(ert-deftest dogechain-api-test/can-get-difficulty ()
+  (with-mock
+   (mock (dogechain-api--get-simple "getdifficulty") => "123.456")
+   (should (= 123.456 (dogechain-api-get-difficulty)))))
+
+
 ;; Internal tests
 
 (ert-deftest dogechain-api-test/can-create-simple-endpoint-without-params ()
