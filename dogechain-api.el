@@ -82,6 +82,9 @@
   "Get the total amount ever sent by ADDRESS."
   (string-to-number (dogechain-api--get-simple "getsentbyaddress" address)))
 
+(defun dogechain-api-hash-to-address (hash)
+  "Convert HASH to an address."
+  (dogechain-api--get-simple "hashtoaddress" hash))
 
 ;; Internal helpers
 
