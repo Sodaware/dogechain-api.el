@@ -10,6 +10,16 @@
    (mock (dogechain-api--get-simple "addresstohash" "TEST_ADDRESS") => "SOME_HASH_HERE")
    (should (string= "SOME_HASH_HERE" (dogechain-api-address-to-hash "TEST_ADDRESS")))))
 
+(ert-deftest dogechain-api-test/valid-address-p-returns-true-when-valid ()
+  (with-mock
+   (mock (dogechain-api--get-simple "checkaddress" "TEST_ADDRESS") => "1E")
+   (should (dogechain-api-valid-address-p "TEST_ADDRESS"))))
+
+(ert-deftest dogechain-api-test/valid-address-p-returns-false-when-invalid ()
+  (with-mock
+   (mock (dogechain-api--get-simple "checkaddress" "INVALID_ADDRESS") => "CK")
+   (should (null (dogechain-api-valid-address-p "INVALID_ADDRESS")))))
+
 
 ;; Internal tests
 

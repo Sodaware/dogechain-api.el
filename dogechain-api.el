@@ -55,6 +55,10 @@
   "Get the public key hash for ADDRESS."
   (dogechain-api--get-simple "addresstohash" address))
 
+(defun dogechain-api-valid-address-p (address)
+  "Check ADDRESS for validity."
+  (string= "1E" (dogechain-api--get-simple "checkaddress" address)))
+
 (defun dogechain-api--get-simple (method &rest params)
   "Get a none-json result from the chain METHOD with optional PARAMS."
   (with-current-buffer (url-retrieve-synchronously (dogechain-api--build-simple-endpoint method params))
