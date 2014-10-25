@@ -93,7 +93,11 @@
 (defun dogechain-api-get-transactions ()
   "Get the amount of transactions for every block."
   (let ((result (dogechain-api--get-simple-json "transactions")))
-    result))
+    (mapcar (lambda (data)
+              `((,:block . ,(elt data 0))
+                (,:timestamp . ,(elt data 1))
+                (,:transactions . ,(elt data 2))))
+            result)))
 
 
 ;; Internal helpers

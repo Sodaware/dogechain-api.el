@@ -63,6 +63,16 @@
    (let ((transactions (dogechain-api-get-transactions)))
      (should (= 5 (length transactions))))))
 
+(ert-deftest dogechain-api-test/get-transactions-contains-keys ()
+  (with-mock
+   (mock (dogechain-api--get-simple-json "transactions") => (read-fixture-as-json "transactions.json"))
+   (let* ((transactions (dogechain-api-get-transactions))
+          (first-block (elt transactions 0)))
+     (should (= 500 (assoc-default :block first-block)))
+     (should (= 1386475886 (assoc-default :timestamp first-block)))
+     (should (= 1 (assoc-default :transactions first-block))))))
+
+
 ;; Internal tests
 
 (ert-deftest dogechain-api-test/can-create-simple-endpoint-without-params ()
