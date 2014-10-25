@@ -20,6 +20,13 @@
    (mock (dogechain-api--get-simple "checkaddress" "INVALID_ADDRESS") => "CK")
    (should (null (dogechain-api-valid-address-p "INVALID_ADDRESS")))))
 
+(ert-deftest dogechain-api-test/decode-address-returns-version-and-hash ()
+  (with-mock
+   (mock (dogechain-api--get-simple "decode_address" "address") => "1E:HASH")
+   (let ((result (dogechain-api-decode-address "address")))
+     (should (string= "1E" (assoc-default :version result)))
+     (should (string= "HASH" (assoc-default :hash result))))))
+
 
 ;; Internal tests
 

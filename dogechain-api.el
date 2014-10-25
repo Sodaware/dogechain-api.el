@@ -59,6 +59,16 @@
   "Check ADDRESS for validity."
   (string= "1E" (dogechain-api--get-simple "checkaddress" address)))
 
+(defun dogechain-api-decode-address (address)
+  "Get the version prefix and hash encoded in ADDRESS."
+  (let* ((result (dogechain-api--get-simple "decode_address" address))
+         (parts (split-string result ":")))
+    `((,:version . ,(car parts))
+      (,:hash . ,(car (cdr parts))))))
+
+
+;; Internal helpers
+
 (defun dogechain-api--get-simple (method &rest params)
   "Get a none-json result from the chain METHOD with optional PARAMS."
   (with-current-buffer (url-retrieve-synchronously (dogechain-api--build-simple-endpoint method params))
