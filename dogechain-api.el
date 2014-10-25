@@ -122,7 +122,7 @@
   "Create the address endpoint for a simple call to METHOD with optional PARAMS."
   (let ((query-string ""))
     (when (not (null params))
-      (setq query-string (mapconcat 'identity params "/")))
+      (setq query-string (mapconcat 'identity (remove nil params) "/")))
     (format "%s%s%s/%s"
             dogechain-api-endpoint
             dogechain-api-simple-endpoint

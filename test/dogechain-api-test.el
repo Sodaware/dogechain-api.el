@@ -84,3 +84,7 @@
                    (dogechain-api--build-simple-endpoint "testmethod" '("param-1"))))
   (should (string= "http://dogechain.info/chain/Dogecoin/q/testmethod/param-1/param-2"
                    (dogechain-api--build-simple-endpoint "testmethod" '("param-1" "param-2")))))
+
+(ert-deftest dogechain-api-test/create-simple-endpoint-does-not-add-empty-params ()
+  (should (string= "http://dogechain.info/chain/Dogecoin/q/testmethod/"
+                   (dogechain-api--build-simple-endpoint "testmethod" '(nil nil nil)))))
