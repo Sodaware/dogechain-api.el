@@ -74,6 +74,11 @@
   "Get the difficulty of the last solved block."
   (string-to-number (dogechain-api--get-simple "getdifficulty")))
 
+(defun dogechain-api-get-received-by-address (address)
+  "Get the total amount ever received by ADDRESS."
+  (string-to-number (dogechain-api--get-simple "getreceivedbyaddress" address)))
+
+
 ;; Internal helpers
 
 (defun dogechain-api--get-simple (method &rest params)
