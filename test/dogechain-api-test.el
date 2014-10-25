@@ -57,6 +57,11 @@
    (mock (dogechain-api--get-simple "totalbc") => "123456.789")
    (should (= 123456.789 (dogechain-api-get-total-currency)))))
 
+(ert-deftest dogechain-api-test/get-transactions-returns-list ()
+  (with-mock
+   (mock (dogechain-api--get-simple-json "transactions") => (read-fixture-as-json "transactions.json"))
+   (let ((transactions (dogechain-api-get-transactions)))
+     (should (= 5 (length transactions))))))
 
 ;; Internal tests
 

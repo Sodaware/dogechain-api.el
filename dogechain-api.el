@@ -90,6 +90,11 @@
   "Get the total amount of currency ever mined."
   (string-to-number (dogechain-api--get-simple "totalbc")))
 
+(defun dogechain-api-get-transactions ()
+  "Get the amount of transactions for every block."
+  (let ((result (dogechain-api--get-simple-json "transactions")))
+    result))
+
 
 ;; Internal helpers
 
@@ -99,6 +104,15 @@
     (delete-region (point-min) (+ 1 url-http-end-of-headers))
     (prog1 (buffer-string)
       (kill-buffer))))
+
+(defun dogechain-api--get-simple-json (method &optional params)
+  "Call METHOD on the server with optional PARAMS."
+  (let ((request-url (dogechain-api--build-simple-endpoint method params)))
+    (with-current-buffer (url-retrieve-synchronously request-url)
+      (goto-char (point-min))
+      (goto-char url-http-end-of-headers)
+      (prog1 (json-read)
+        (kill-buffer)))))
 
 (defun dogechain-api--build-simple-endpoint (method &optional params)
   "Create the address endpoint for a simple call to METHOD with optional PARAMS."
