@@ -27,6 +27,10 @@
      (should (string= "1E" (assoc-default :version result)))
      (should (string= "HASH" (assoc-default :hash result))))))
 
+(ert-deftest dogechain-api-test/can-get-block-count ()
+  (with-mock
+   (mock (dogechain-api--get-simple "getblockcount") => "123456")
+   (should (eq 123456 (dogechain-api-get-block-count)))))
 
 ;; Internal tests
 

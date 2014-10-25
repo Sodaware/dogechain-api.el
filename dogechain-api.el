@@ -66,6 +66,9 @@
     `((,:version . ,(car parts))
       (,:hash . ,(car (cdr parts))))))
 
+(defun dogechain-api-get-block-count ()
+  "Get the current block number."
+  (string-to-number (dogechain-api--get-simple "getblockcount")))
 
 ;; Internal helpers
 
