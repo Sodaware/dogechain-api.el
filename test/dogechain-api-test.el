@@ -42,6 +42,11 @@
    (mock (dogechain-api--get-simple "getreceivedbyaddress" "TEST_ADDRESS") => "123456.789")
    (should (= 123456.789 (dogechain-api-get-received-by-address "TEST_ADDRESS")))))
 
+(ert-deftest dogechain-api-test/can-get-sent-by-address ()
+  (with-mock
+   (mock (dogechain-api--get-simple "getsentbyaddress" "TEST_ADDRESS") => "123456.789")
+   (should (= 123456.789 (dogechain-api-get-sent-by-address "TEST_ADDRESS")))))
+
 
 ;; Internal tests
 

@@ -78,6 +78,10 @@
   "Get the total amount ever received by ADDRESS."
   (string-to-number (dogechain-api--get-simple "getreceivedbyaddress" address)))
 
+(defun dogechain-api-get-sent-by-address (address)
+  "Get the total amount ever sent by ADDRESS."
+  (string-to-number (dogechain-api--get-simple "getsentbyaddress" address)))
+
 
 ;; Internal helpers
 
