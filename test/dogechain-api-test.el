@@ -2,7 +2,7 @@
 
 (ert-deftest dogechain-api-test/can-get-address-balance ()
   (with-mock
-   (mock (dogechain-api--get-simple "addressbalance" "TEST_ADDRESS") => (read-fixture-as-string "getaddressbalance-test_address.txt"))
+   (mock (dogechain-api--get-simple "addressbalance" "TEST_ADDRESS") => "123456.789")
    (should (= 123456.789 (dogechain-api-get-address-balance "TEST_ADDRESS")))))
 
 (ert-deftest dogechain-api-test/can-get-address-hash ()
