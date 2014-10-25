@@ -86,6 +86,11 @@
   "Convert HASH to an address."
   (dogechain-api--get-simple "hashtoaddress" hash))
 
+(defun dogechain-api-get-total-currency ()
+  "Get the total amount of currency ever mined."
+  (string-to-number (dogechain-api--get-simple "totalbc")))
+
+
 ;; Internal helpers
 
 (defun dogechain-api--get-simple (method &rest params)
