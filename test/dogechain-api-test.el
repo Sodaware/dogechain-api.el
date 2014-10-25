@@ -18,7 +18,7 @@
 (ert-deftest dogechain-api-test/valid-address-p-returns-false-when-invalid ()
   (with-mock
    (mock (dogechain-api--get-simple "checkaddress" "INVALID_ADDRESS") => "CK")
-   (should (null (dogechain-api-valid-address-p "INVALID_ADDRESS")))))
+   (should-not (dogechain-api-valid-address-p "INVALID_ADDRESS"))))
 
 (ert-deftest dogechain-api-test/decode-address-returns-version-and-hash ()
   (with-mock
