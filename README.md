@@ -7,10 +7,15 @@
 It's not a particularly useful extension on its own, as there are no interactive
 functions, but can be used to build something more interesting.
 
+## Library Functions
 
-## Simple Query API Functions
+The DogeChain API is split into two sections, a simple query API and a JSON
+api.
 
-The DogeChain API docs can be found here: http://dogechain.info/api/simple
+### Simple Query API
+
+The DogeChain simple query API docs can be found here:
+http://dogechain.info/api/simple
 
 The API functions are mapped as follows:
 
@@ -30,13 +35,33 @@ totalbc              | dogechain-api-get-total-currency
 transactions         | dogechain-api-get-transactions
 
 
-### dogechain-api-get-address-balance *address*
+#### dogechain-api-get-address-balance *address*
 
 Get the total amount ever received, minus the total amount ever sent for
 *address*.
 
 ```lisp
 (dogechain-api-get-address-balance "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
+```
+
+#### dogechain-api-address-to-hash *address*
+
+Get the public key hash for *address*.
+
+```lisp
+(dogechain-api-address-to-hash "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
+```
+
+#### dogechain-api-valid-address-p *address*
+
+Check *address* for validity.
+
+```lisp
+(dogechain-api-valid-address-p "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
+> T
+
+(dogechain-api-valid-address-p "INVALID")
+> NIL
 ```
 
 
