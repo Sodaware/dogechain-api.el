@@ -36,11 +36,6 @@
 
 ;; Configuration
 
-(defgroup dogechain-api nil
-  "Dogechain api extension"
-  :group 'comms
-  :prefix "dogechain-api-")
-
 (defconst dogechain-api-endpoint "http://dogechain.info")
 (defconst dogechain-api-simple-endpoint "/chain/Dogecoin/q/")
 
