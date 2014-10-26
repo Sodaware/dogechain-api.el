@@ -42,7 +42,7 @@ Get the total amount ever received, minus the total amount ever sent for
 
 ```lisp
 (dogechain-api-get-address-balance "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
-> 12345.6789
+=> 12345.6789
 ```
 
 #### dogechain-api-address-to-hash *address*
@@ -51,7 +51,7 @@ Get the public key hash for *address*.
 
 ```lisp
 (dogechain-api-address-to-hash "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
-> "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A"
+=> "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A"
 ```
 
 #### dogechain-api-valid-address-p *address*
@@ -60,10 +60,10 @@ Check *address* for validity.
 
 ```lisp
 (dogechain-api-valid-address-p "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
-> T
+=> T
 
 (dogechain-api-valid-address-p "INVALID")
-> NIL
+=> NIL
 ```
 
 #### dogechain-api-decode-address *address*
@@ -73,7 +73,7 @@ list containing `:version` and `:hash` keys.
 
 ```lisp
 (dogechain-api-decode-address "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
-> ((:version . "1e")
+=> ((:version . "1e")
    (:hash . "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A"))
 ```
 
@@ -83,7 +83,7 @@ Get the current block number.
 
 ```lisp
 (dogechain-api-get-block-count)
-> 123456
+=> 123456
 ```
 
 #### dogechain-api-get-difficulty
@@ -92,7 +92,7 @@ Get the difficulty of the last solved block.
 
 ```lisp
 (dogechain-api-get-difficulty)
-> 123456
+=> 123456
 ```
 
 #### dogechain-api-get-recieved-by-address *address*
@@ -101,7 +101,7 @@ Get the total amount ever received by *address*.
 
 ```lisp
 (dogechain-api-get-received-by-address "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
-> 123456.7890
+=> 123456.7890
 ```
 
 #### dogechain-api-get-sent-by-address *address*
@@ -110,7 +110,7 @@ Get the total amount ever sent by *address*.
 
 ```lisp
 (dogechain-api-get-sent-by-address "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
-> 123456.7890
+=> 123456.7890
 ```
 
 #### dogechain-api-hash-to-address *hash*
@@ -119,7 +119,7 @@ Convert *hash* to a DogeCoin address.
 
 ```lisp
 (dogechain-api-hash-to-address "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A")
-> "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e"
+=> "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e"
 ```
 
 #### dogechain-api-get-network-statistics &optional *interval* *start* *stop*
@@ -147,7 +147,7 @@ Each item in the list contains the following keys:
 ```lisp
 ;; Example data here as targets can be very large!
 (dogechain-api-get-network-statistics)
-> (((:block . 1)
+=> (((:block . 1)
     (:timestamp . 123456)
     (:target . 123456)
     (:average-target . 123)
@@ -167,7 +167,7 @@ Get the total amount of currency ever mined.
 
 ```lisp
 (dogechain-api-get-total-currency)
-> 12345678.90
+=> 12345678.90
 ```
 
 
@@ -186,7 +186,7 @@ the following keys:
 
 ```lisp
 (dogechain-api-get-transactions)
-> (((:block . 1)
+=> (((:block . 1)
     (:timestamp . 123456)
     (:transactions . 10))
    ((:block . 2)
