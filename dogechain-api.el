@@ -86,19 +86,6 @@
   "Convert HASH to an address."
   (dogechain-api--get-simple "hashtoaddress" hash))
 
-(defun dogechain-api-get-total-currency ()
-  "Get the total amount of currency ever mined."
-  (string-to-number (dogechain-api--get-simple "totalbc")))
-
-(defun dogechain-api-get-transactions ()
-  "Get the amount of transactions for every block."
-  (let ((result (dogechain-api--get-simple-json "transactions")))
-    (mapcar (lambda (data)
-              `((,:block . ,(elt data 0))
-                (,:timestamp . ,(elt data 1))
-                (,:transactions . ,(elt data 2))))
-            result)))
-
 (defun dogechain-api-get-network-statistics (&optional interval start stop)
   "Fetch network statistics, optionally arranged by INTERVAL between START and STOP."
   (let* ((interval (if (null interval) 144 interval))
@@ -115,6 +102,19 @@
                 (,:average-interval . ,(elt data 6))
                 (,:hashes-per-second . ,(elt data 7))))
             response)))
+
+(defun dogechain-api-get-total-currency ()
+  "Get the total amount of currency ever mined."
+  (string-to-number (dogechain-api--get-simple "totalbc")))
+
+(defun dogechain-api-get-transactions ()
+  "Get the amount of transactions for every block."
+  (let ((result (dogechain-api--get-simple-json "transactions")))
+    (mapcar (lambda (data)
+              `((,:block . ,(elt data 0))
+                (,:timestamp . ,(elt data 1))
+                (,:transactions . ,(elt data 2))))
+            result)))
 
 
 ;; Internal helpers
