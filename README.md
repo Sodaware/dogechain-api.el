@@ -14,18 +14,21 @@ The DogeChain API docs can be found here: http://dogechain.info/api/simple
 
 The API functions are mapped as follows:
 
-* addressbalance => dogechain-api-get-address-balance
-* addresstohash => dogechain-api-address-to-hash
-* checkaddress => dogechain-api-valid-address-p
-* decode_address => dogechain-api-decode-address
-* getblockcount => dogechain-api-get-block-count
-* getdifficulty => dogechain-api-get-difficulty
-* getreceivedbyaddress => dogechain-api-get-received-by-address
-* getsentbyaddress => dogechain-api-get-sent-by-address
-* hashtoaddress => dogechain-api-hash-to-address
-* nethash => dogechain-api-get-network-statistics
-* totalbc => dogechain-api-get-total-currency
-* transactions => dogechain-api-get-transactions
+API Method           | Local Function
+------------------------------------------------------------
+addressbalance       | dogechain-api-get-address-balance
+addresstohash        | dogechain-api-address-to-hash
+checkaddress         | dogechain-api-valid-address-p
+decode_address       | dogechain-api-decode-address
+getblockcount        | dogechain-api-get-block-count
+getdifficulty        | dogechain-api-get-difficulty
+getreceivedbyaddress | dogechain-api-get-received-by-address
+getsentbyaddress     | dogechain-api-get-sent-by-address
+hashtoaddress        | dogechain-api-hash-to-address
+nethash              | dogechain-api-get-network-statistics
+totalbc              | dogechain-api-get-total-currency
+transactions         | dogechain-api-get-transactions
+
 
 ### dogechain-api-get-address-balance *address*
 
