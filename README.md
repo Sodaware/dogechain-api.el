@@ -4,8 +4,37 @@
 
 **dogechain-api** is an Emacs library for working with the dogechain.info API.
 
-It's not a particularly useful extension on its own, but can be used to build
-something more interesting.
+It's not a particularly useful extension on its own, as there are no interactive
+functions, but can be used to build something more interesting.
+
+
+## Simple Query API Functions
+
+The DogeChain API docs can be found here: http://dogechain.info/api/simple
+
+The API functions are mapped as follows:
+
+* addressbalance => dogechain-api-get-address-balance
+* addresstohash => dogechain-api-address-to-hash
+* checkaddress => dogechain-api-valid-address-p
+* decode_address => dogechain-api-decode-address
+* getblockcount => dogechain-api-get-block-count
+* getdifficulty => dogechain-api-get-difficulty
+* getreceivedbyaddress => dogechain-api-get-received-by-address
+* getsentbyaddress => dogechain-api-get-sent-by-address
+* hashtoaddress => dogechain-api-hash-to-address
+* nethash => dogechain-api-get-network-statistics
+* totalbc => dogechain-api-get-total-currency
+* transactions => dogechain-api-get-transactions
+
+### dogechain-api-get-address-balance *address*
+
+Get the total amount ever received, minus the total amount ever sent for
+*address*.
+
+```lisp
+(dogechain-api-get-address-balance "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
+```
 
 
 ## Licence
