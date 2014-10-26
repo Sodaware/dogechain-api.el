@@ -15,7 +15,7 @@ The DogeChain API docs can be found here: http://dogechain.info/api/simple
 The API functions are mapped as follows:
 
 API Method           | Local Function
-------------------------------------------------------------
+---------------------|--------------------------------------
 addressbalance       | dogechain-api-get-address-balance
 addresstohash        | dogechain-api-address-to-hash
 checkaddress         | dogechain-api-valid-address-p
