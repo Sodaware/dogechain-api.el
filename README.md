@@ -74,7 +74,7 @@ list containing `:version` and `:hash` keys.
 ```el
 (dogechain-api-decode-address "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e")
 => ((:version . "1e")
-   (:hash . "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A"))
+    (:hash . "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A"))
 ```
 
 #### dogechain-api-get-block-count
@@ -148,15 +148,15 @@ Each item in the list contains the following keys:
 ;; Example data here as targets can be very large!
 (dogechain-api-get-network-statistics)
 => (((:block . 1)
-    (:timestamp . 123456)
-    (:target . 123456)
-    (:average-target . 123)
-    (:difficulty . 1234)
-    (:hashes-to-win . 1000)
-    (:average-interval . 12)
-    (:hashes-per-second . 100))
-   ;; More block information
-   ((:block ... ))
+     (:timestamp . 123456)
+     (:target . 123456)
+     (:average-target . 123)
+     (:difficulty . 1234)
+     (:hashes-to-win . 1000)
+     (:average-interval . 12)
+     (:hashes-per-second . 100))
+    ;; More block information
+    ((:block ... ))
   )
 ```
 
@@ -187,12 +187,12 @@ the following keys:
 ```el
 (dogechain-api-get-transactions)
 => (((:block . 1)
-    (:timestamp . 123456)
-    (:transactions . 10))
-   ((:block . 2)
-    (:timestamp . 234560)
-    (:transactions . 20))
-    ;; And so on...
+     (:timestamp . 123456)
+     (:transactions . 10))
+    ((:block . 2)
+     (:timestamp . 234560)
+     (:transactions . 20))
+     ;; And so on...
   )
 ```
 
