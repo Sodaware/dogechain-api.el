@@ -92,10 +92,6 @@
      (should (= 301 (assoc-default :average-interval first-result)))
      (should (= 5579 (assoc-default :hashes-per-second first-result))))))
 
-
-;;blockNumber,time,target,avgTargetSinceLast,difficulty,hashesToWin,avgIntervalSinceLast,netHashPerSecond
-
-
 ;; Internal tests
 
 (ert-deftest dogechain-api-test/can-create-simple-endpoint-without-params ()
@@ -111,3 +107,10 @@
 (ert-deftest dogechain-api-test/create-simple-endpoint-does-not-add-empty-params ()
   (should (string= "http://dogechain.info/chain/Dogecoin/q/testmethod/"
                    (dogechain-api--build-simple-endpoint "testmethod" '(nil nil nil)))))
+
+(ert-deftest dogechain-api-test/can-get-simple-json ()
+  (with-mock
+   (mock (url-retrieve-synchronously "http://dogechain.info/chain/Dogecoin/q/nethash/?format=json") => (read-fixture-file-as-response "nethash.json"))
+   (let* ((response (dogechain-api--get-simple-json "nethash"))
+          (first-result (elt response 0)))
+     (should (= 5 (length response))))))
