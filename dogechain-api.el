@@ -124,7 +124,7 @@
 (defun dogechain-api--get-simple-json (method &rest params)
   "Call METHOD on the server with optional PARAMS and return result as JSON."
   (let ((request-url (dogechain-api--build-simple-endpoint method params)))
-    (with-current-buffer (url-retrieve-synchronously (contact request-url "?format=json"))
+    (with-current-buffer (url-retrieve-synchronously (concat request-url "?format=json"))
       (goto-char (point-min))
       (goto-char url-http-end-of-headers)
       (prog1 (json-read)
