@@ -58,8 +58,8 @@
   "Get the version prefix and hash encoded in ADDRESS."
   (let* ((result (dogechain-api--get-simple "decode_address" address))
          (parts (split-string result ":")))
-    `((,:version . ,(car parts))
-      (,:hash . ,(car (cdr parts))))))
+    `((:version . ,(car parts))
+      (:hash . ,(car (cdr parts))))))
 
 (defun dogechain-api-get-block-count ()
   "Get the current block number."
@@ -88,14 +88,14 @@
          (stop (if (null stop) -1 stop))
          (response (dogechain-api--get-simple-json "nethash" interval start stop)))
     (mapcar (lambda (data)
-              `((,:block . ,(elt data 0))
-                (,:timestamp . ,(elt data 1))
-                (,:target . ,(elt data 2))
-                (,:average-target . ,(elt data 3))
-                (,:difficulty . ,(elt data 4))
-                (,:hashes-to-win . ,(elt data 5))
-                (,:average-interval . ,(elt data 6))
-                (,:hashes-per-second . ,(elt data 7))))
+              `((:block . ,(elt data 0))
+                (:timestamp . ,(elt data 1))
+                (:target . ,(elt data 2))
+                (:average-target . ,(elt data 3))
+                (:difficulty . ,(elt data 4))
+                (:hashes-to-win . ,(elt data 5))
+                (:average-interval . ,(elt data 6))
+                (:hashes-per-second . ,(elt data 7))))
             response)))
 
 (defun dogechain-api-get-total-currency ()
@@ -106,9 +106,9 @@
   "Get the amount of transactions for every block."
   (let ((result (dogechain-api--get-simple-json "transactions")))
     (mapcar (lambda (data)
-              `((,:block . ,(elt data 0))
-                (,:timestamp . ,(elt data 1))
-                (,:transactions . ,(elt data 2))))
+              `((:block . ,(elt data 0))
+                (:timestamp . ,(elt data 1))
+                (:transactions . ,(elt data 2))))
             result)))
 
 
