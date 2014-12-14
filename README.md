@@ -131,8 +131,8 @@ intervals.
 
 Each item in the list contains the following keys:
 
-| Key                | Description
-|--------------------|-------------------------------------------
+Key                  | Description
+---------------------|-------------------------------------------
 `:block`             | Height of the last block in *interval* + 1
 `:timestamp`         | Unix timestamp for this block
 `:target`            | Target for this block
@@ -178,8 +178,8 @@ Get the amount of transactions for the previous block.
 Returns a list of block transaction information. Each item in the list contains
 the following keys:
 
-| Key           | Description
-|---------------|------------------------------------------
+Key             | Description
+----------------|------------------------------------------
 `:block`        | Block number
 `:timestamp`    | Unix timestamp for this block
 `:transactions` | Number of transactions made in this block

@@ -25,7 +25,33 @@
 ;; dogechain-api provides library functionality for working with the
 ;; Dogecoin blockchain
 
-;;; Code:
+;; The DogeChain API is split into two sections, a simple query API and a JSON
+;; api.
+
+;; Simple Query API
+
+;; The DogeChain simple query API docs can be found here:
+;; http://dogechain.info/api/simple
+
+;; The API functions are mapped as follows:
+
+;; API Method           | Local Function
+;; ---------------------|--------------------------------------
+;; addressbalance       | dogechain-api-get-address-balance
+;; addresstohash        | dogechain-api-address-to-hash
+;; checkaddress         | dogechain-api-valid-address-p
+;; decode_address       | dogechain-api-decode-address
+;; getblockcount        | dogechain-api-get-block-count
+;; getdifficulty        | dogechain-api-get-difficulty
+;; getreceivedbyaddress | dogechain-api-get-received-by-address
+;; getsentbyaddress     | dogechain-api-get-sent-by-address
+;; hashtoaddress        | dogechain-api-hash-to-address
+;; nethash              | dogechain-api-get-network-statistics
+;; totalbc              | dogechain-api-get-total-currency
+;; transactions         | dogechain-api-get-transactions
+
+
+;; Code:
 
 ;; Dependencies
 
@@ -40,7 +66,9 @@
 (defconst dogechain-api-simple-endpoint "/chain/Dogecoin/q/")
 
 
-;; Simple API functions
+;; ----------------------------------------------------------------------
+;; -- Simple API Functions
+;; ----------------------------------------------------------------------
 
 (defun dogechain-api-get-address-balance (address)
   "Get amount ever received minus amount ever sent by ADDRESS."
@@ -112,7 +140,9 @@
             result)))
 
 
-;; Internal helpers
+;; ----------------------------------------------------------------------
+;; -- Internal Helpers
+;; ----------------------------------------------------------------------
 
 (defun dogechain-api--get-simple (method &rest params)
   "Get a none-json result from the chain METHOD with optional PARAMS."
