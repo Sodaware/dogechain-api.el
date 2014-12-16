@@ -5,4 +5,5 @@
 
 (development
  (depends-on "ert-runner")
- (depends-on "el-mock"))
+ (depends-on "el-mock")
+ (depends-on "owl" :git "git@github.com:tonini/owl.el.git" :files ("*")))
