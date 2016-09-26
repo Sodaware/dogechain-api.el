@@ -29,7 +29,6 @@ getblockcount        | dogechain-api-get-block-count
 getdifficulty        | dogechain-api-get-difficulty
 getreceivedbyaddress | dogechain-api-get-received-by-address
 getsentbyaddress     | dogechain-api-get-sent-by-address
-hashtoaddress        | dogechain-api-hash-to-address
 totalbc              | dogechain-api-get-total-currency
 
 
@@ -113,12 +112,8 @@ Get the total amount ever sent by *address*.
 
 #### dogechain-api-hash-to-address *hash*
 
-Convert *hash* to a DogeCoin address.
+*Deprecated by the API*
 
-```el
-(dogechain-api-hash-to-address "F8783344AF8532A73DFA97EBDDFCC7527A2C6E5A")
-=> "DTnt7VZqR5ofHhAxZuDy4m3PhSjKFXpw3e"
-```
 
 #### dogechain-api-get-network-statistics &optional *interval* *start* *stop*
 

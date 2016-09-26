@@ -47,11 +47,6 @@
    (mock (dogechain-api--get-simple "getsentbyaddress" "TEST_ADDRESS") => "123456.789")
    (should (= 123456.789 (dogechain-api-get-sent-by-address "TEST_ADDRESS")))))
 
-(ert-deftest dogechain-api-test/can-convert-hash-address ()
-  (with-mock
-   (mock (dogechain-api--get-simple "hashtoaddress" "TEST_HASH") => "TEST_ADDRESS")
-   (should (string= "TEST_ADDRESS" (dogechain-api-hash-to-address "TEST_HASH")))))
-
 (ert-deftest dogechain-api-test/can-get-total-currency ()
   (with-mock
    (mock (dogechain-api--get-simple "totalbc") => "123456.789")

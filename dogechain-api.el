@@ -105,7 +105,7 @@
 
 (defun dogechain-api-hash-to-address (hash)
   "Convert HASH to an address."
-  (dogechain-api--get-simple "hashtoaddress" hash))
+  (warn "This method has been deprecated."))
 
 (defun dogechain-api-get-network-statistics (&optional interval start stop)
   "Fetch network statistics, optionally arranged by INTERVAL between START and STOP."
