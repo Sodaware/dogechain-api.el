@@ -57,21 +57,6 @@
    (mock (dogechain-api--get-simple "totalbc") => "123456.789")
    (should (= 123456.789 (dogechain-api-get-total-currency)))))
 
-(ert-deftest dogechain-api-test/get-transactions-returns-list ()
-  (with-mock
-   (mock (dogechain-api--get-simple-json "transactions") => (read-fixture-as-json "transactions.json"))
-   (let ((transactions (dogechain-api-get-transactions)))
-     (should (= 5 (length transactions))))))
-
-(ert-deftest dogechain-api-test/get-transactions-contains-keys ()
-  (with-mock
-   (mock (dogechain-api--get-simple-json "transactions") => (read-fixture-as-json "transactions.json"))
-   (let* ((transactions (dogechain-api-get-transactions))
-          (first-block (elt transactions 0)))
-     (should (= 500 (assoc-default :block first-block)))
-     (should (= 1386475886 (assoc-default :timestamp first-block)))
-     (should (= 1 (assoc-default :transactions first-block))))))
-
 (ert-deftest dogechain-api-test/get-network-statistics-returns-list ()
   (with-mock
    (mock (dogechain-api--get-simple-json "nethash") => (read-fixture-as-json "nethash.json"))

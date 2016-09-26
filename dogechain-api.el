@@ -48,7 +48,6 @@
 ;; hashtoaddress        | dogechain-api-hash-to-address
 ;; nethash              | dogechain-api-get-network-statistics
 ;; totalbc              | dogechain-api-get-total-currency
-;; transactions         | dogechain-api-get-transactions
 
 
 ;; Code:
@@ -131,13 +130,8 @@
   (string-to-number (dogechain-api--get-simple "totalbc")))
 
 (defun dogechain-api-get-transactions ()
-  "Get the amount of transactions for every block."
-  (let ((result (dogechain-api--get-simple-json "transactions")))
-    (mapcar (lambda (data)
-              `((:block . ,(elt data 0))
-                (:timestamp . ,(elt data 1))
-                (:transactions . ,(elt data 2))))
-            result)))
+  "DEPRECATED: Get the amount of transactions for every block."
+  (warn "This method has been deprecated."))
 
 
 ;; ----------------------------------------------------------------------
