@@ -30,9 +30,7 @@ getdifficulty        | dogechain-api-get-difficulty
 getreceivedbyaddress | dogechain-api-get-received-by-address
 getsentbyaddress     | dogechain-api-get-sent-by-address
 hashtoaddress        | dogechain-api-hash-to-address
-nethash              | dogechain-api-get-network-statistics
 totalbc              | dogechain-api-get-total-currency
-transactions         | dogechain-api-get-transactions
 
 
 #### dogechain-api-get-address-balance *address*
@@ -124,41 +122,7 @@ Convert *hash* to a DogeCoin address.
 
 #### dogechain-api-get-network-statistics &optional *interval* *start* *stop*
 
-Fetch statistics for the network. Returns a list of block information that
-occurred between the *start* and *stop* block, spaced by *interval*. By default
-it will fetch all information from the first to last block, spaced at 144 block
-intervals.
-
-Each item in the list contains the following keys:
-
-Key                  | Description
----------------------|-------------------------------------------
-`:block`             | Height of the last block in *interval* + 1
-`:timestamp`         | Unix timestamp for this block
-`:target`            | Target for this block
-`:average-target`    | Harmonic mean of `:target` over *interval*
-`:difficulty`        | Difficulty for this block
-`:hashes-to-win`     | Expected number of hashes required to solve a block of `:difficulty`
-`:average-interval`  | Interval seconds, divided by blocks
-`:hashes-per-second` | Estimated network hash rate for this block
-
-**NOTE**: This function can return a lot of data!
-
-```el
-;; Example data here as targets can be very large!
-(dogechain-api-get-network-statistics)
-=> (((:block . 1)
-     (:timestamp . 123456)
-     (:target . 123456)
-     (:average-target . 123)
-     (:difficulty . 1234)
-     (:hashes-to-win . 1000)
-     (:average-interval . 12)
-     (:hashes-per-second . 100))
-    ;; More block information
-    ((:block ... ))
-  )
-```
+*Deprecated by the API*
 
 
 #### dogechain-api-get-total-currency
@@ -173,28 +137,7 @@ Get the total amount of currency ever mined.
 
 #### dogechain-api-get-transactions
 
-Get the amount of transactions for the previous block.
-
-Returns a list of block transaction information. Each item in the list contains
-the following keys:
-
-Key             | Description
-----------------|------------------------------------------
-`:block`        | Block number
-`:timestamp`    | Unix timestamp for this block
-`:transactions` | Number of transactions made in this block
-
-```el
-(dogechain-api-get-transactions)
-=> (((:block . 1)
-     (:timestamp . 123456)
-     (:transactions . 10))
-    ((:block . 2)
-     (:timestamp . 234560)
-     (:transactions . 20))
-     ;; And so on...
-  )
-```
+*Deprecated by the API*
 
 
 ## Licence
