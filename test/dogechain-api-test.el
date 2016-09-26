@@ -57,25 +57,6 @@
    (mock (dogechain-api--get-simple "totalbc") => "123456.789")
    (should (= 123456.789 (dogechain-api-get-total-currency)))))
 
-(ert-deftest dogechain-api-test/get-network-statistics-returns-list ()
-  (with-mock
-   (mock (dogechain-api--get-simple-json "nethash") => (read-fixture-as-json "nethash.json"))
-   (let ((statistics (dogechain-api-get-network-statistics)))
-     (should (= 5 (length statistics))))))
-
-(ert-deftest dogechain-api-test/get-network-statistics-contains-keys ()
-  (with-mock
-   (mock (dogechain-api--get-simple-json "nethash") => (read-fixture-as-json "nethash.json"))
-   (let* ((statistics (dogechain-api-get-network-statistics))
-          (first-result (elt statistics 0)))
-     (should (= 500 (assoc-default :block first-result)))
-     (should (= 1386475886 (assoc-default :timestamp first-result)))
-     (should (= 6901641034498895230248057944249341782018790077074986006051269912821760 (assoc-default :target first-result)))
-     (should (= 69016706544110646121312590156214853227120998882806968922155747617576697 (assoc-default :average-target first-result)))
-     (should (= 0.003 (assoc-default :difficulty first-result)))
-     (should (= 16777472 (assoc-default :hashes-to-win first-result)))
-     (should (= 301 (assoc-default :average-interval first-result)))
-     (should (= 5579 (assoc-default :hashes-per-second first-result))))))
 
 ;; Internal tests
 
@@ -93,9 +74,3 @@
   (should (string= "http://dogechain.info/chain/Dogecoin/q/testmethod/"
                    (dogechain-api--build-simple-endpoint "testmethod" '(nil nil nil)))))
 
-(ert-deftest dogechain-api-test/can-get-simple-json ()
-  (with-mock
-   (mock (url-retrieve-synchronously "http://dogechain.info/chain/Dogecoin/q/nethash/?format=json") => (read-fixture-file-as-response "nethash.json"))
-   (let* ((response (dogechain-api--get-simple-json "nethash"))
-          (first-result (elt response 0)))
-     (should (= 5 (length response))))))

@@ -46,7 +46,6 @@
 ;; getreceivedbyaddress | dogechain-api-get-received-by-address
 ;; getsentbyaddress     | dogechain-api-get-sent-by-address
 ;; hashtoaddress        | dogechain-api-hash-to-address
-;; nethash              | dogechain-api-get-network-statistics
 ;; totalbc              | dogechain-api-get-total-currency
 
 
@@ -110,20 +109,7 @@
 
 (defun dogechain-api-get-network-statistics (&optional interval start stop)
   "Fetch network statistics, optionally arranged by INTERVAL between START and STOP."
-  (let* ((interval (if (null interval) 144 interval))
-         (start (if (null start) 0 start))
-         (stop (if (null stop) -1 stop))
-         (response (dogechain-api--get-simple-json "nethash" interval start stop)))
-    (mapcar (lambda (data)
-              `((:block . ,(elt data 0))
-                (:timestamp . ,(elt data 1))
-                (:target . ,(elt data 2))
-                (:average-target . ,(elt data 3))
-                (:difficulty . ,(elt data 4))
-                (:hashes-to-win . ,(elt data 5))
-                (:average-interval . ,(elt data 6))
-                (:hashes-per-second . ,(elt data 7))))
-            response)))
+  (warn "This method has been deprecated."))
 
 (defun dogechain-api-get-total-currency ()
   "Get the total amount of currency ever mined."
